@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import { StoreProvider } from "./store/StoreProvider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <StoreProvider>
+
+    <html className=" *:box-border" lang="en">
+
       <body className={inter.className}>
       <div className='flex flex-col min-h-screen'>
       <Navbar />
@@ -26,5 +31,6 @@ export default function RootLayout({
       </div>
       </body>
     </html>
+    </ StoreProvider>
   );
 }

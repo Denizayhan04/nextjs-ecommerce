@@ -5,7 +5,7 @@ import { AiFillLike } from "react-icons/ai";
 
 const Comment = () => {
   return (
-    <div className='mb-4 min-h-36 p-2 flex flex-col justify-between gap-2 border-2 border-slate-200'>
+    <div className='mb-4 min-h-24 p-2 flex flex-col justify-between gap-2 border-2 border-slate-200'>
       
       <div className='flex justify-between'>
         <div>Yıldız sayısı</div>

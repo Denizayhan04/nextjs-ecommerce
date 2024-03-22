@@ -11,7 +11,7 @@ const CategorySelector = () => {
     isOpen
     ?
     <div>
-    <div onClick={()=>setIsOpen(!isOpen)} className='  h-8 flex justify-between px-3 items-center cursor-pointer '>
+    <div onClick={()=>setIsOpen(!isOpen)} className=' h-8 flex justify-between px-3 items-center cursor-pointer '>
         <span>CategoryName</span>
         <span className=' rotate-180'><IoIosArrowUp size={28} /></span>
     </div>
@@ -24,13 +24,14 @@ const CategorySelector = () => {
 
     </div>
     </div>
-
-
     :
-    <div onClick={()=>setIsOpen(!isOpen)} className='  h-8 flex justify-between px-3 items-center cursor-pointer '>
+    
+    
+    <div onClick={()=>setIsOpen(!isOpen)} className='  h-8 flex justify-between pl-3 items-center cursor-pointer '>
         <span>CategoryName</span>
         <span><IoIosArrowUp size={28} /></span>
-    </div>
+    </div> 
+
     }
 
     

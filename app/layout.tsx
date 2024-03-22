@@ -20,13 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-
     <html className=" *:box-border" lang="en">
-
       <body className={inter.className}>
       <div className='flex flex-col min-h-screen'>
       <Navbar />
-        <main className='flex-grow'>{children}</main>
+        <main className='flex flex-col  flex-grow relative' >{children}</main>
         <Footer />
       </div>
       </body>

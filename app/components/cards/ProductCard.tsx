@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import Button from '@/app/general/Button'
+import Button from '@/app/components/general/Button'
 import { FaStar } from "react-icons/fa";
 
 const ProductCard = () => {

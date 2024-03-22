@@ -8,7 +8,7 @@ const ProductContainer = () => {
     <div className="hidden md:block md:min-w-56">
         <CategorySelector />
     </div>
-    <div className=" bg-purple-400 flex flex-1 flex-wrap  lg:pl-6 ">
+    <div className=" bg-purple-400 flex flex-1 flex-wrap gap-4  lg:pl-6 ">
 
           <ProductCard />
           <ProductCard />

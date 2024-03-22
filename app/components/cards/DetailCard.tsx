@@ -1,5 +1,5 @@
 "use client"
-import Button from '@/app/general/Button'
+import Button from '@/app/components/general/Button'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import Comment from '../utils/Comment'
@@ -19,14 +19,14 @@ const DetailCard:React.FC<DetailCardProps> = ({id}) => {
 
 
   }
+  console.log(id)
   return (
     <div>
       <h3>Kategori</h3>
       
       <div className='pt-3 block lg:flex'>
-{/*         <div className=' relative min-w-[200px] min-h-[400px] max-w-[300px] max-h-[600px] md:min-w-[400px] md:h-[600px] mr-8  bg-black'>
- */}        
-        <div className=' box-border w-3/4 lg:w-[400px] relative mr-8 bg-black'  style={{ aspectRatio:3/4 }}>
+       
+        <div className=' box-border w-3/4   lg:w-[400px]  relative mr-8 bg-black'  style={{ aspectRatio:3/4 }}>
         <Image alt='product photo' fill src={""}/>
         </div>
 
@@ -49,9 +49,16 @@ const DetailCard:React.FC<DetailCardProps> = ({id}) => {
 
       </div>
       <div className=' mt-6'>
-        <div className='mb-4 p-2 min-h-24 bg-gray-200'>
-          <input type='text' />
-          yorum ekle
+        <div className='mb-4 p-2 min-h-24 bg-gray-200 relative'>
+          <form>
+          <textarea rows={5} className='resize-none w-full min-h-16 outline-none' />
+          <div className='flex justify-between px-2 md:px-8'>
+            <span>yıldız</span>
+            <input type='submit' value="Send comment" className='bg-red-100 cursor-pointer' />
+          </div>
+          </form>
+
+          
         </div>
         <Comment />
         <Comment />

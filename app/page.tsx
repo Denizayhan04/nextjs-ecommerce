@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import ProductCard from "./components/cards/ProductCard";
 import PageContainers from "./containers/PageContainers";
-import Slider from "./general/Slider";
+import Slider from "./components/general/Slider";
 import { RootState } from "./store/store";
 import ProductContainer from "./containers/ProductContainer";
 

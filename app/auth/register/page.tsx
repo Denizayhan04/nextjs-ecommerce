@@ -19,7 +19,7 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
     email:'',
     password: '',
     rePassword:'',
-    gender:null,
+    gender:0,
     checbox:false
   });
 
@@ -31,11 +31,27 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
 
     axios.post("/api/register",{
       name:formData.name,
+      surName:formData.surname,
       email:formData.email,
       password:formData.password,
       gender:formData.gender
     })
-    .then(()=>{console.log(31)})
+    .then(() => {
+      signIn('credentials', {
+          email: formData.email,
+          password: formData.password,
+          redirect: false
+      }).then((callback) => {
+          if(callback?.ok){
+              router.push('/cart')
+              router.refresh();
+          }
+
+          if(callback?.error){
+              console.error(callback.error)
+          }
+      })
+  })
 
 
   e.preventDefault()
@@ -44,6 +60,7 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
   // Input değerlerini güncelleyen fonksiyon
   const handleInputChange = (fieldName:string,e:ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
+    console.log(formData)
     setFormData(prevState => ({
       ...prevState,
       [fieldName]: value
@@ -57,6 +74,18 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
       checbox:!(prevState.checbox)
     }))
   }
+
+  const selectFunc = (e: any) => {
+    const genderValue = e.target.value;
+    setFormData((prevState) => ({
+      ...prevState,
+      gender: parseInt(genderValue)
+    }));
+    console.log(genderValue); // Güncel değeri doğrudan konsola yazdırın
+  };
+  
+  
+
   
   return (
     <div className='flex flex-1 justify-center items-center'>
@@ -70,10 +99,10 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
             <Input id='email' type='email' placeholder='email' width={400} outline onChange={(e)=>handleInputChange("email",e)} />
             <Input id='password' type='password' placeholder='password' width={400} outline onChange={(e)=>handleInputChange("password",e)} />
             <Input id='repassword' type='password' placeholder='password again' width={400} outline onChange={(e)=>handleInputChange("rePassword",e)} />
-            <select onChange={(e)=>console.log("name",e)} className='w-[400px] h-12 text-lg mt-2'>
-              <option value="">Cinsiyet (isteğe bağlı)</option>
-              <option value={0}>Kadın</option>
-              <option value={1}>Erkek</option>
+            <select value={formData.gender} onChange={(e)=>selectFunc(e)} className='w-[400px] h-12 text-lg mt-2'>
+              <option value={0} >Cinsiyet (isteğe bağlı)</option>
+              <option value={1}>Kadın</option>
+              <option value={2}>Erkek</option>
             </select>
             <div className='mt-4 text-left w-[400px]'>
               <div className='flex'>
@@ -95,3 +124,4 @@ const page:React.FC<RegisterClientProps> = ({currentUser}) => {
 }
 
 export default page 
+

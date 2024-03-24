@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Logo from './Logo'
-import HamburgerMenu from './HamburgerMenu'
 import User from './User'
 import Search from './Search'
 import Basket from './Basket'
@@ -13,9 +12,8 @@ const Navbar =async () => {
       <Logo />
       <Search />
       <div className='flex gap-4'>
-        <User currentUser={currentUser} />
-        <HamburgerMenu />
         <Basket />
+        <User currentUser={currentUser} />
       </div>
     </div>
   );

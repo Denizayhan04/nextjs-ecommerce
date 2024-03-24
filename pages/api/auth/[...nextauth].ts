@@ -12,7 +12,7 @@ export const authOptions : AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
         email: { label: "email", type: "text"},
         password: {  label: "password", type: "password" }
@@ -44,7 +44,7 @@ export const authOptions : AuthOptions = {
     
   ],
   pages : {
-    signIn: "/login"
+    signIn: "/auth/login"
   },
   debug: process.env.NODE_ENV === "development",
   session: {

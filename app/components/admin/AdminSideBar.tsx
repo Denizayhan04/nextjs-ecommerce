@@ -32,7 +32,7 @@ const AdminSideBar = () => {
   ]
 
   return (
-    <div className='flex-1 bg-orange-400 w-[250px] flex-col '>
+    <div className=' bg-orange-400 w-[250px] flex-col '>
       {
         adminPanelItems.map((e,i)=>(
           <AdminSidebarItem key={i} selected={pathname == e.url} name={e.name} icon={e.icon} url={e.url} />

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
 import AdminSideBar from '@/app/components/admin/AdminSideBar';
 import Input from '@/app/components/general/Input';
@@ -18,7 +18,7 @@ interface FormData {
 const page = () => {
   const router = useRouter();
     const [images, setImages] = useState<FileList | null>();
-    let uploadedImages: Array<string> = [];
+    var uploadedImages: Array<string> = [];
     const [formData, setFormData] = useState<FormData>({
       name: "",
       category: "",
@@ -78,10 +78,7 @@ const page = () => {
                 await Promise.all(promises);
     
                 console.log(uploadedImages, "sa");
-                setFormData((prevState) => ({
-                    ...prevState,
-                    image: uploadedImages,
-                }));
+
             } else {
                 console.log("images içi boş");
             }
@@ -95,7 +92,26 @@ const page = () => {
     const onSubmit = async (e: any) => {
         e.preventDefault();
         await uploadFirebase()
-        console.log(formData,)
+        console.log(uploadedImages,"aa")
+
+        console.log(formData)
+
+         axios.post("/api/product",{
+            name: formData.name,
+            category: formData.category,
+            brand: formData.brand,
+            price: Number(formData.price),
+            description: formData.description,
+            image: uploadedImages,
+            inStock: formData.inStock
+        })
+        .then(()=>{
+            console.log("basarili")
+        })
+        .catch((e:any)=>{
+            console.log(e)
+        })  
+ 
 
     };
     const fileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,13 +121,6 @@ const page = () => {
     };
 
 
-          axios.post("/api/product",formData)
-        .then(()=>{
-            console.log("basarili")
-        })
-        .catch((e:any)=>{
-            console.log(e)
-        })  
 
     
 

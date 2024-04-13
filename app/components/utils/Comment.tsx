@@ -2,24 +2,24 @@ import React from 'react'
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 
-
-const Comment = () => {
+interface commentProps {comment:any}
+const Comment:React.FC<commentProps> = ({comment}) => {
   return (
     <div className='mb-4 min-h-24 p-2 flex flex-col justify-between gap-2 border-2 border-slate-200'>
       
       <div className='flex justify-between'>
-        <div>Yıldız sayısı</div>
+        <div>{comment.rating}</div>
         <div>Yüklenme tarihi</div>
       </div>
       
       <div>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni a dicta accusantium nostrum error voluptas at aliquam possimus recusandae corporis.
+        {comment.comment}
       </div>
 
         <div className='flex justify-between '>
         
           <div>
-            İsim soyisim anonim
+            {comment.userName}
           </div>
         
           <div className=' flex'>

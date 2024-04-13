@@ -103,13 +103,14 @@ const page = () => {
             price: Number(formData.price),
             description: formData.description,
             image: uploadedImages,
-            inStock: formData.inStock
+            inStock: formData.inStock,
+            reviews:[]
         })
         .then(()=>{
             console.log("basarili")
         })
         .catch((e:any)=>{
-            console.log(e)
+            console.log("err",e)
         })  
  
 
@@ -135,7 +136,7 @@ const page = () => {
     const checboxFunc = () => {
         setFormData((prevState) => ({
             ...prevState,
-            checbox: !(prevState.inStock)
+            inStock: !(prevState.inStock)
         }));
     };
 

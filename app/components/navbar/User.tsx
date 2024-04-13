@@ -12,7 +12,6 @@ interface UserProps{
 const UserPage:React.FC<UserProps> = ({currentUser}) => {
   const router = useRouter()
   const [isUserOpen,setIsUserOpen] = useState(false);
-  console.log(currentUser)
 
   const logOutFunc = ()=>{
     setIsUserOpen(false)

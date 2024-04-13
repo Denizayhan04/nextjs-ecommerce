@@ -25,7 +25,7 @@ const Input:React.FC<InputProps> = ({width,outline,placeholder,type,id, onChange
     <div className=' h-fit relative' >
       <input
         id={id}
-        type={(type==="password" && (!showPassword)) ? "password" : type }
+        type={(type==="password" && (!showPassword)) ? "password" : "text" }
         placeholder={placeholder}
         style={{width:width}}
         className={`h-12 relative outline-none rounded-lg p-3 ${outline ? "border border-orange-400 text-black" : "bg-orange-400 text-black" } `}
@@ -36,9 +36,9 @@ const Input:React.FC<InputProps> = ({width,outline,placeholder,type,id, onChange
           {
             showPassword 
             ?
-            <FaEye onClick={()=>setShowPassword(!showPassword)} className=' cursor-pointer' size={24} />
+            <FaEye onClick={()=>setShowPassword(false)} className=' cursor-pointer' size={24} />
             :
-            <FaEyeSlash onClick={()=>setShowPassword(!showPassword)} className=' cursor-pointer' size={24} />
+            <FaEyeSlash onClick={()=>setShowPassword(true)} className=' cursor-pointer' size={24} />
           }
         </div>
       }

@@ -6,9 +6,9 @@ import { NextResponse } from "next/server";
 export async function POST(request:Request) {
     const currentUser = await getCurrentUser();
 
-    if(!currentUser || currentUser.role !== "ADMIN"){
+/*     if(!currentUser || currentUser.role !== "ADMIN"){
         return NextResponse.error()
-    } 
+    }  */
     const body = await request.json();
     const {name, description, brand, category, price, inStock, image} = body;
 
@@ -22,6 +22,9 @@ export async function POST(request:Request) {
             price: parseFloat(price),
             inStock,
             image,
+
+
+
         }
     })
     .catch((e)=>{console.log(e,"prisma")})

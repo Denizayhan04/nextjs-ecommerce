@@ -4,8 +4,10 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Product } from '@prisma/client';
+import { useRouter } from 'next/navigation';
 
 const page =() => {
+  const router = useRouter()
   const [row,setRow] = useState([]);
   var products:any = []
   useEffect(()=>{
@@ -34,7 +36,10 @@ const page =() => {
   const handleDelete = (productId:string)=>{
     console.log(productId)
     axios.delete(`/api/delete/${productId}`)
-    .then(()=>{console.log(31)})
+    .then(()=>{
+      console.log(31)
+      router.refresh();
+    })
     .catch((err)=>{console.log(err)})
 
   }

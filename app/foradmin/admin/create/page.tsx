@@ -125,7 +125,7 @@ const page = () => {
 
     
 
-    const handleInputChange = (fieldName: string, e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+    const handleInputChange = (fieldName: string, e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = e.target;
         setFormData(prevState => ({
             ...prevState,
@@ -149,8 +149,8 @@ const page = () => {
                     <Input width={"100%"} type='text' outline placeholder='Ürün Kategori' onChange={(e) => { handleInputChange("category", e) }} />
                     <Input width={"100%"} type='text' outline placeholder='Ürün marka' onChange={(e) => { handleInputChange("brand", e) }} />
                     <Input width={"100%"} type='text' outline placeholder='Ürün fiyat' onChange={(e) => { handleInputChange("price", e) }} />
-                    <input className='w-full' type='textarea' placeholder='Ürün açıklaması' onChange={(e) => { handleInputChange("description", e) }} />
-                    <input className='w-full' type='file' placeholder='Ürün fotolaro' multiple onChange={fileChange} />
+                    <textarea className='w-full resize-y h-12'  onChange={(e) => { handleInputChange("description", e) }} />
+                    <input className='w-full' type='file' placeholder='Ürün fotolaro' accept='image/png, image/jpeg, image/jpg' multiple onChange={fileChange} />
                     <label>
                         <input className='w-full' id='checkbox' type="checkbox" onChange={checboxFunc} />
                         instock?
